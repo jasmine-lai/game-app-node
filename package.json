@@ -1,0 +1,31 @@
+{
+  "type": "module",
+  "name": "game-app-node",
+  "version": "1.0.0",
+  "description": "Node.js for game app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasmine-lai/game-app-node.git"
+  },
+  "keywords": [
+    "Node",
+    "REST",
+    "Server",
+    "HTTP"
+  ],
+  "author": "Neha Sriram, Jay Hui, Eileen Lee, Jasmine Lai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasmine-lai/game-app-node/issues"
+  },
+  "homepage": "https://github.com/jasmine-lai/game-app-node#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
