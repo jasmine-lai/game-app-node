@@ -5,10 +5,10 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     role: {
       type: String,
-      enum: ["GAMER", "DEVELOPER"],
-      default: "GAMER",
+      enum: ["GAMER", "DEVELOPER", "USER"],
+      default: "USER",
     },
   },
-  { collection: "gamers" }
+  { collection: "users" }
 );
 export default userSchema;
