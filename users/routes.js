@@ -44,6 +44,7 @@ function UserRoutes(app) {
 
   app.post("/api/users", createUser);
   app.delete("/api/users/:userId", deleteUser);
+  app.get("/api/users/:userId", findUserById);
   app.post("/api/users/signup", signup);
   app.post("/api/users/signin", signin);
   app.post("/api/users/signout", signout);
