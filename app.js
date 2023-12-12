@@ -1,8 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
-import UserRoutes from "./users/routes.js";
 import cors from "cors";
-import mongoose from "mongoose";
+
+import UserRoutes from "./users/routes.js";
+import ReviewRoutes from "./reviews/routes.js";
+
 mongoose.connect("mongodb://127.0.0.1:27017/game-app");
 
 const app = express();
@@ -12,6 +14,8 @@ app.get("/", (req, res) => {
 
 app.use(cors());
 app.use(express.json());
+
 UserRoutes(app);
+ReviewRoutes(app);
 
 app.listen(4000);

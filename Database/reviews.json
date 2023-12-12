@@ -1,0 +1,26 @@
+[
+    {
+        "gameID": 100,
+        "reviewID": 1,
+        "user": "fauna",
+        "date": "3/21/2021",
+        "tite": "uuuuuuuuu",
+        "desc": "did you know that fauna is an anagram of noelle?"
+    },
+    {
+        "gameID": 100,
+        "reviewID": 2,
+        "user": "yarharhar",
+        "date": "3/21/2021",
+        "tite": "yo ho ho",
+        "desc": "you are a pirate"
+    },
+    {
+        "gameID": 101,
+        "reviewID": 3,
+        "user": "the real faker",
+        "date": "3/21/2021",
+        "tite": "i am faker",
+        "desc": "play game good"
+    }
+]
