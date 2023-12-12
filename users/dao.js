@@ -1,5 +1,6 @@
 import model from "./model.js";
 export const createUser = (user) => model.create(user);
+export const findUserById = (userId) => model.findById(userId);
 export const findUserByCredentials = (usr, pass) =>
   model.findOne({ username: usr, password: pass });
 export const updateUser = (userId, user) =>
