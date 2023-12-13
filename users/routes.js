@@ -19,8 +19,9 @@ function UserRoutes(app) {
     res.json(status);
   };
 
-  const findUserById = async (req, res) => {
-    const user = await dao.findUserById(req.params.userId);
+  const findUserByUsername = async (req, res) => {
+    console.log(req.params);
+    const user = await dao.findUserByUsername(req.params.username);
     res.json(user);
   };
 
@@ -45,14 +46,13 @@ function UserRoutes(app) {
   };
 
   const account = async (req, res) => {
-    console.log(currentUser);
     res.json(currentUser);
   };
 
   app.post("/api/users", createUser);
   app.delete("/api/users/:userId", deleteUser);
   app.put("/api/users/:userId", updateUser);
-  app.get("/api/users/:userId", findUserById);
+  app.get("/api/users/:username", findUserByUsername);
   app.post("/api/users/signup", signup);
   app.post("/api/users/signin", signin);
   app.post("/api/users/signout", signout);
