@@ -4,7 +4,7 @@
         "reviewID": 1,
         "user": "fauna",
         "date": "3/21/2021",
-        "tite": "uuuuuuuuu",
+        "title": "uuuuuuuuu",
         "desc": "did you know that fauna is an anagram of noelle?"
     },
     {
@@ -12,7 +12,7 @@
         "reviewID": 2,
         "user": "yarharhar",
         "date": "3/21/2021",
-        "tite": "yo ho ho",
+        "title": "yo ho ho",
         "desc": "you are a pirate"
     },
     {
@@ -20,7 +20,7 @@
         "reviewID": 3,
         "user": "the real faker",
         "date": "3/21/2021",
-        "tite": "i am faker",
+        "title": "i am faker",
         "desc": "play game good"
     }
 ]

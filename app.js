@@ -12,7 +12,11 @@ app.get("/", (req, res) => {
   res.send("Game App Backend with Node.js express");
 });
 
-app.use(cors());
+app.use(cors({
+  credentials: true,
+  origin: "http://localhost:3000"//process.env.FRONTEND_URL
+}));
+
 app.use(express.json());
 
 UserRoutes(app);
