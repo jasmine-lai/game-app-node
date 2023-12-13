@@ -16,11 +16,19 @@
         "desc": "you are a pirate"
     },
     {
-        "gameID": 101,
+        "gameID": 666,
         "reviewID": 3,
         "user": "the real faker",
         "date": "3/21/2021",
         "title": "i am faker",
         "desc": "play game good"
+    },
+    {
+        "gameID": 666,
+        "reviewID": 3,
+        "user": "the fake faker",
+        "date": "3/21/2021",
+        "title": "ruined my life",
+        "desc": "i hate this game"
     }
 ]
