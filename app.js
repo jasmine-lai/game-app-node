@@ -4,6 +4,7 @@ import cors from "cors";
 
 import UserRoutes from "./users/routes.js";
 import ReviewRoutes from "./reviews/routes.js";
+import GameRoutes from "./games/routes.js";
 
 mongoose.connect("mongodb://127.0.0.1:27017/game-app");
 
@@ -21,5 +22,6 @@ app.use(express.json());
 
 UserRoutes(app);
 ReviewRoutes(app);
+GameRoutes(app);
 
 app.listen(4000);

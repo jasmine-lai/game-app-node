@@ -1,47 +1,47 @@
 import Database from "../Database/index.js";
 
-function ReviewRoutes(app) {
+function GameRoutes(app) {
 
-    //get reviews based on game
-    app.get("/api/reviews/:id", (req, res) => {
+    //get games based on id
+    app.get("/api/games/:id", (req, res) => {
         const { id } = req.params;
-        const reviews = Database.reviews
-            .filter((r) => r.gameID === Number(id));
-        if (!reviews) {
-            res.status(404).send("No reviews");
+        const games = Database.games
+            .find((r) => r.gameID === Number(id));
+        if (!games) {
+            res.status(404).send("No games");
             return;
         }
-        res.send(reviews);
+        res.send(games);
     });
 
-    app.put("/api/reviews/:id", (req, res) => {
+    app.put("/api/games/:id", (req, res) => {
         const { id } = req.params;
-        const review = req.body;
-        Database.reviews = Database.reviews.map((c) =>
-            c.reviewID === reviewID ? { c, ...review } : c
+        const game = req.body;
+        Database.games = Database.games.map((c) =>
+            c.gameID === gameID ? { c, ...game } : c
         );
         res.sendStatus(204);
     });
 
-    app.delete("/api/reviews/:id", (req, res) => {
+    app.delete("/api/games/:id", (req, res) => {
         const { id } = req.params;
         Database.courses = Database.courses
-            .filter((c) => c.reviewID !== id);
+            .filter((c) => c.gameID !== id);
         res.sendStatus(204);
     });
 
-    app.post("/api/reviews", (req, res) => {
-        const reviews = {
+    app.post("/api/games", (req, res) => {
+        const games = {
             ...req.body,
             _id: new Date().getTime().toString()
         };
-        Database.reviews.push(review);
-        res.send(review);
+        Database.games.push(game);
+        res.send(game);
     });
 
-    app.get("/api/reviews", (req, res) => {
-        const reviews = Database.reviews;
-        res.send(reviews);
+    app.get("/api/games", (req, res) => {
+        const games = Database.games;
+        res.send(games);
     });
 }
-export default ReviewRoutes;
+export default GameRoutes;
