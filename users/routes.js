@@ -1,6 +1,13 @@
 import * as dao from "./dao.js";
 
+let currentUser = null;
+
 function UserRoutes(app) {
+  const findAllUsers = async (req, res) => {
+    const users = await dao.findAllUsers();
+    res.json(users);
+  };
+
   const createUser = async (req, res) => {
     const user = await dao.createUser(req.body);
     res.json(user);
@@ -11,34 +18,54 @@ function UserRoutes(app) {
     res.json(status);
   };
 
+  const updateUser = async (req, res) => {
+    const { userId } = req.params;
+    console.log(req.body);
+    const status = await dao.updateUser(userId, req.body);
+    res.json(status);
+  };
+
+  const findUserByUsername = async (req, res) => {
+    const user = await dao.findUserByUsername(req.params.username);
+    res.json(user);
+  };
+
   const signup = async (req, res) => {
     const user = await dao.findUserByUsername(req.body.username);
     if (user) {
-      res.status(400).json({ message: "Username already taken" });
+      res.sendStatus(403);
+    } else {
+      currentUser = await dao.createUser(req.body);
+      res.json(currentUser);
     }
-    const currentUser = await dao.createUser(req.body);
-    req.session["currentUser"] = currentUser;
-    res.json(currentUser);
   };
 
   const signin = async (req, res) => {
     const { username, password } = req.body;
-    const currentUser = await dao.findUserByCredentials(username, password);
-    req.session["currentUser"] = currentUser;
-    res.json(currentUser);
+    const user = await dao.findUserByCredentials(username, password);
+    if (user) {
+      currentUser = user;
+      res.json(currentUser);
+    } else {
+      res.sendStatus(403);
+    }
   };
 
   const signout = (req, res) => {
-    req.session.destroy();
+    currentUser = null;
     res.json(200);
   };
 
   const account = async (req, res) => {
-    res.json(req.session["currentUser"]);
+    res.json(currentUser);
   };
 
+  app.get("/api/users", findAllUsers);
+  app.get("/api/users/s/:username", findUserByUsername);
   app.post("/api/users", createUser);
+  app.put("/api/users/:userId", updateUser);
   app.delete("/api/users/:userId", deleteUser);
+
   app.post("/api/users/signup", signup);
   app.post("/api/users/signin", signin);
   app.post("/api/users/signout", signout);

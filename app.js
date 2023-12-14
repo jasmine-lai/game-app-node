@@ -1,15 +1,20 @@
+import "dotenv/config";
 import express from "express";
-import mongoose from "mongoose";
 import cors from "cors";
+import session from "express-session";
+import mongoose from "mongoose";
 
 import UserRoutes from "./users/routes.js";
 import ReviewRoutes from "./reviews/routes.js";
 import GameRoutes from "./games/routes.js";
 import HomeRoutes from "./home/routes.js";
 
-mongoose.connect("mongodb://127.0.0.1:27017/game-app");
+const CONNECTION_STRING =
+  process.env.DB_CONNECTION_STRING || "mongodb://127.0.0.1:27017/game-app";
+mongoose.connect("mongodb://127.0.0.1:27017/game-app"); //CONNECTION_STRING
 
 const app = express();
+app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Game App Backend with Node.js express");
 });
@@ -27,3 +32,10 @@ GameRoutes(app);
 HomeRoutes(app);
 
 app.listen(4000);
+const port = process.env.PORT || 4000;
+const sessionOptions = {
+  secret: "any string",
+  resave: false,
+  saveUninitialized: false,
+};
+app.use(session(sessionOptions));

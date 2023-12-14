@@ -1,7 +1,6 @@
 [
     {
         "gameID": 100,
-        "reviewID": 1,
         "user": "fauna",
         "date": "3/21/2021",
         "title": "uuuuuuuuu",
@@ -9,7 +8,6 @@
     },
     {
         "gameID": 100,
-        "reviewID": 2,
         "user": "yarharhar",
         "date": "3/21/2021",
         "title": "yo ho ho",
@@ -17,7 +15,6 @@
     },
     {
         "gameID": 101,
-        "reviewID": 3,
         "user": "the real faker",
         "date": "3/21/2021",
         "title": "i am faker",
