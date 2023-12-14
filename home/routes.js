@@ -1,6 +1,9 @@
 import axios from "axios";
+import rateLimit from 'axios-rate-limit';
 
 function HomeRoutes(app) {
+    const http = rateLimit(axios.create(), { maxRequests: 4, perMilliseconds: 1000, maxRPS: 4 })
+
     app.get("/api/home/featured", (req, res) => {
     const options = {
                 method: 'POST',
@@ -13,7 +16,7 @@ function HomeRoutes(app) {
                     Authorization: 'Bearer ihyg0hixxny2sxzmz8x1lhh4itdjrp'
                 },
             };   
-        axios.request(options).then(function (response) {
+        http.request(options).then(function (response) {
                     const games = response.data;
                     console.log(games);
                     res.send(games);
@@ -33,7 +36,7 @@ app.get("/api/home/newreleases", (req, res) => {
                     Authorization: 'Bearer ihyg0hixxny2sxzmz8x1lhh4itdjrp'
                 },
             };   
-        axios.request(options).then(function (response) {
+        http.request(options).then(function (response) {
                     const games = response.data;
                     console.log(games);
                     res.send(games);
