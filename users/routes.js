@@ -30,6 +30,13 @@ function UserRoutes(app) {
     res.json(user);
   };
 
+  const findUserByUsernameId = async (req, res) => {
+    const user = await dao.findUserByUsernameId(req.params.username);
+    console.log(req.params.username);
+    console.log(user);
+    res.json(user);
+  };
+
   const signup = async (req, res) => {
     const user = await dao.findUserByUsername(req.body.username);
     if (user) {
@@ -62,6 +69,7 @@ function UserRoutes(app) {
 
   app.get("/api/users", findAllUsers);
   app.get("/api/users/s/:username", findUserByUsername);
+  app.get("/api/users/:username", findUserByUsernameId);
   app.post("/api/users", createUser);
   app.put("/api/users/:userId", updateUser);
   app.delete("/api/users/:userId", deleteUser);

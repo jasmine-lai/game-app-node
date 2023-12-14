@@ -16,10 +16,14 @@ export const findUserByUsername = (username) => {
   model.find({ title: { $regex: regex } })
 }
 
+export const findUserByUsernameId = (username) => 
+  model.findOne({ username: username });  
+
 export const updateUser = (userId, user) => {
   const { _id, ...updateFields } = user;
   console.log(updateFields);
-  const result = model.updateOne({ _id: new mongoose.Types.ObjectId(userId) }, { $set: updateFields }).exec();
+  const result = model.findOneAndUpdate({ _id: new mongoose.Types.ObjectId(userId) }, { $set: updateFields }).exec();
+  console.log(result);
 }
 
 export const deleteUser = (userId) => model.deleteOne({ _id: userId });
