@@ -1,7 +1,9 @@
 import Database from "../Database/index.js";
 import axios from "axios";
+import rateLimit from 'axios-rate-limit';
 
 function GameRoutes(app) {
+    const http = rateLimit(axios.create(), { maxRequests: 4, perMilliseconds: 1000, maxRPS: 4 })
 
     //get games based on id
     app.get("/api/games/:id", (req, res) => {
@@ -19,7 +21,7 @@ function GameRoutes(app) {
             data: `fields name,summary;\nwhere id = ${id};`
         };
 
-        axios.request(options).then(function (response) {
+        http.request(options).then(function (response) {
             console.log(response.data);
             res.send(response.data[0]);
         }).catch(function (error) {
@@ -43,7 +45,7 @@ function GameRoutes(app) {
             data: `fields name,summary;\nsearch "${search}";\nlimit 20;`
         };
 
-        axios.request(options).then(function (response) {
+        http.request(options).then(function (response) {
             res.send(response.data);
         }).catch(function (error) {
             console.error(error);
@@ -65,7 +67,7 @@ function GameRoutes(app) {
             data: `fields url;\nwhere game = ${id};`
         };
 
-        axios.request(options).then(function (response) {
+        http.request(options).then(function (response) {
             const data = response.data;
             res.send(data);
         }).catch(function (error) {
@@ -112,7 +114,7 @@ function GameRoutes(app) {
             data: 'fields name,summary;\nlimit 10;\nsort rating desc;'
         };
 
-        axios.request(allGameOptions).then(function (response) {
+        http.request(allGameOptions).then(function (response) {
             const games = response.data;
             res.send(games);
         }).catch(function (error) {
