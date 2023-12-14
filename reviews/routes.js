@@ -9,7 +9,7 @@ function ReviewRoutes(app) {
     app.get("/api/reviews", findAllReviews);
 
     const findReviewByGameId = async (req, res) => {
-        const reviews = await dao.findReviewByGameId(req.params.gameID);
+        const reviews = await dao.findReviewByGameId(req.params.gameId);
         try {
             res.json(reviews);
         } catch (error) {
@@ -19,11 +19,16 @@ function ReviewRoutes(app) {
     app.get("/api/reviews/gid/:gameId", findReviewByGameId);
 
     const findReviewByReviewId = async (req, res) => {
-        console.log(req.params);
-        const review = await dao.findReviewByReviewId(req.params.reviewID);
+        const review = await dao.findReviewByReviewId(req.params.reviewId);
         res.json(review);
     };
     app.get("/api/reviews/rid/:reviewId", findReviewByReviewId);
+
+    const findReviewByUserId = async (req, res) => {
+        const reviews = await dao.findReviewByUserId(req.params.userId);
+        res.json(reviews);
+    };
+    app.get("/api/reviews/uid/:userId", findReviewByUserId);
 
     const createReview = async (req, res) => {
         const Review = await dao.createReview(req.body);

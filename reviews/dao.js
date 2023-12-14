@@ -7,7 +7,9 @@ export const findAllReviews = () => model.find();
 
 export const findReviewByGameId = (gameId) => model.find({ gameID: gameId });
 
-export const findReviewByReviewId = (reviewId) => model.findById(reviewId);
+export const findReviewByReviewId = (reviewId) => model.find({ reviewID: reviewId });
+
+export const findReviewByUserId = (userId) => model.find({user: userId});
 
 export const updateReview = (reviewId, review) => {
     const { _id, ...updateFields } = review;
