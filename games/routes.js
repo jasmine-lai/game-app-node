@@ -1,6 +1,20 @@
 import Database from "../Database/index.js";
+import axios from "axios";
 
 function GameRoutes(app) {
+
+    const options = {
+        method: 'POST',
+        url: 'https://api.igdb.com/v4/games/',
+        headers: {
+            cookie: '__cf_bm=YAJTzfOP9HVZPDDKmOpD0suZMczF.xiWwtROysk.eQs-1702526360-1-AQ7qN%2B9D%2FSfGg%2FBjtFJzN0yCRB3YCOf4FObhD0RHgfaRRwvxCOAFoZ8irdQQX9muEedZNft78Nk%2FbD6PTFMOB%2Bs%3D',
+            'Content-Type': 'text/plain',
+            'User-Agent': 'insomnia/8.4.5',
+            'Client-ID': 'caz1k3iyna0frvcdf2vuupurrnf1el',
+            Authorization: 'Bearer ihyg0hixxny2sxzmz8x1lhh4itdjrp'
+        },
+        data: 'fields name,summary;\nlimit 10;'
+    };
 
     //get games based on id
     app.get("/api/games/:id", (req, res) => {
@@ -40,8 +54,15 @@ function GameRoutes(app) {
     });
 
     app.get("/api/games", (req, res) => {
-        const games = Database.games;
-        res.send(games);
+
+        axios.request(options).then(function (response) {
+            const games = response.data;
+            console.log(games);
+            res.send(games);
+        }).catch(function (error) {
+            console.error(error);
+        });
+
     });
 }
 export default GameRoutes;
