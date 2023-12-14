@@ -1,4 +1,5 @@
 import Database from "../Database/index.js";
+import axios from "axios";
 
 function GameRoutes(app) {
 
@@ -31,7 +32,6 @@ function GameRoutes(app) {
         };
 
         axios.request(options).then(function (response) {
-            console.log(response.data);
             res.send(response.data);
         }).catch(function (error) {
             console.error(error);
@@ -102,7 +102,6 @@ function GameRoutes(app) {
 
         axios.request(allGameOptions).then(function (response) {
             const games = response.data;
-            //console.log(games);
             res.send(games);
         }).catch(function (error) {
             console.error(error);
