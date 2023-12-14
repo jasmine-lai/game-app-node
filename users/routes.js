@@ -55,6 +55,7 @@ function UserRoutes(app) {
     res.json(currentUser);
   };
 
+  app.get("/api/users", findAllUsers);
   app.post("/api/users", createUser);
   app.post("/api/users", createUser);
   app.delete("/api/users/:userId", deleteUser);
