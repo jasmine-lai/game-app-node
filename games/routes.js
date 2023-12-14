@@ -1,5 +1,4 @@
 import Database from "../Database/index.js";
-import axios from "axios";
 
 function GameRoutes(app) {
 
