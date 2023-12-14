@@ -1,10 +1,4 @@
 import Database from "../Database/index.js";
-<<<<<<< HEAD
-
-function ReviewRoutes(app) {
-
-    //get reviews based on game
-=======
 import * as dao from "./dao.js";
 
 function ReviewRoutes(app) {
@@ -58,7 +52,6 @@ function ReviewRoutes(app) {
 
     //get reviews based on game
     /*
->>>>>>> database
     app.get("/api/reviews/:id", (req, res) => {
         const { id } = req.params;
         const reviews = Database.reviews
@@ -99,9 +92,6 @@ function ReviewRoutes(app) {
         const reviews = Database.reviews;
         res.send(reviews);
     });
-<<<<<<< HEAD
-=======
     */
->>>>>>> database
 }
 export default ReviewRoutes;

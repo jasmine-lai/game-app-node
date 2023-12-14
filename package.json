@@ -28,11 +28,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-<<<<<<< HEAD
-=======
     "express-session": "^1.17.3",
     "mongodb": "4.1",
->>>>>>> database
     "mongoose": "^8.0.3"
   }
 }
