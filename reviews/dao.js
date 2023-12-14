@@ -1,7 +1,7 @@
 import model from "./model.js";
 import mongoose from "mongoose";
 
-export const createReview = (user) => model.create(user);
+export const createReview = (review) => model.create(review);
 
 export const findAllReviews = () => model.find();
 

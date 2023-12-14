@@ -31,8 +31,12 @@ function ReviewRoutes(app) {
     app.get("/api/reviews/uid/:userId", findReviewByUserId);
 
     const createReview = async (req, res) => {
-        const Review = await dao.createReview(req.body);
-        res.json(Review);
+        try {
+            const Review = await dao.createReview(req.body);
+            res.json(Review);
+        } catch (error) {
+            console.log(error);
+        }
     };
     app.post("/api/reviews", createReview);
 

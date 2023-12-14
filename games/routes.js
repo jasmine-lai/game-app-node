@@ -5,14 +5,25 @@ function GameRoutes(app) {
 
     //get games based on id
     app.get("/api/games/:id", (req, res) => {
-        const { id } = req.params;
-        const games = Database.games
-            .find((r) => r.gameID === Number(id));
-        if (!games) {
-            res.status(404).send("No games");
-            return;
-        }
-        res.send(games);
+        const options = {
+            method: 'POST',
+            url: 'https://api.igdb.com/v4/games/',
+            headers: {
+              cookie: '__cf_bm=PKuQooVqgNkD.rfI4XHQjzU8BycefsgjuPcu7DQ.3SE-1702536316-1-AdRFG1owgn4g%2F3cFjSVJT4fNI4E7cLK6FFbpYKRkqI1%2B%2BbtGssNW5jWlEpDVLhgy7Hu7KlaJ5xNfawGBuUCC0qE%3D',
+              'Content-Type': 'text/plain',
+              'User-Agent': 'insomnia/8.4.5',
+              'Client-ID': 'caz1k3iyna0frvcdf2vuupurrnf1el',
+              Authorization: 'Bearer ihyg0hixxny2sxzmz8x1lhh4itdjrp'
+            },
+            data: 'fields name,summary;\nwhere id = 44711;'
+          };
+          
+          axios.request(options).then(function (response) {
+            console.log(response.data);
+            res.send(response.data[0]);
+          }).catch(function (error) {
+            console.error(error);
+          });
     });
 
     //search games

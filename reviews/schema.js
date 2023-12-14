@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema(
     {
         gameID: { type: String, required: true},
-        reviewID: { type: String, required: true, unique: true  },
         user: { type: String, required: true},
         date: { type: String, required: true},
         title: { type: String, required: true},
