@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const userSchema = new mongoose.Schema(
+const reviewSchema = new mongoose.Schema(
     {
         gameID: { type: String, required: true},
         user: { type: String, required: true},
@@ -9,12 +9,11 @@ const userSchema = new mongoose.Schema(
     },
     { collection: "reviews" }
 );
-export default userSchema;
+export default reviewSchema;
 
 /*
    {
         "gameID": 100,
-        "reviewID": 1,
         "user": "fauna",
         "date": "3/21/2021",
         "title": "uuuuuuuuu",
