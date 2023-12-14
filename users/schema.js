@@ -11,7 +11,8 @@ const userSchema = new mongoose.Schema(
       enum: ["GAMER", "ADMIN"],
       default: "GAMER",
     },
-    favGame: [Number]
+    favGame: [Number],
+    following: [String]
   },
   { collection: "users" }
 );
