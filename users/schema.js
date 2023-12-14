@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema(
       enum: ["GAMER", "DEVELOPER"],
       default: "GAMER",
     },
+    favGame: [Number]
   },
   { collection: "users" }
 );
