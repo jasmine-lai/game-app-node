@@ -56,11 +56,11 @@ function UserRoutes(app) {
   };
 
   app.get("/api/users", findAllUsers);
-  app.post("/api/users", createUser);
-  app.post("/api/users", createUser);
-  app.delete("/api/users/:userId", deleteUser);
-  app.put("/api/users/:userId", updateUser);
   app.get("/api/users/:username", findUserByUsername);
+  app.post("/api/users", createUser);
+  app.put("/api/users/:userId", updateUser);
+  app.delete("/api/users/:userId", deleteUser);
+  
   app.post("/api/users/signup", signup);
   app.post("/api/users/signin", signin);
   app.post("/api/users/signout", signout);

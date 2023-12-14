@@ -1,8 +1,52 @@
 import Database from "../Database/index.js";
+import * as dao from "./dao.js";
 
 function ReviewRoutes(app) {
+    const findAllReviews = async (req, res) => {
+        const reviews = await dao.findAllReviews();
+        res.json(reviews);
+    };
+    app.get("/api/reviews", findAllReviews);
+
+    const findReviewByGameId = async (req, res) => {
+        const reviews = await dao.findReviewByGameId(req.params.gameID);
+        try {
+            res.json(reviews);
+        } catch (error) {
+            console.log(req.params);
+        }
+    };
+    app.get("/api/reviews/gid/:gameId", findReviewByGameId);
+
+    const findReviewByReviewId = async (req, res) => {
+        console.log(req.params);
+        const review = await dao.findReviewByReviewId(req.params.reviewID);
+        res.json(review);
+    };
+    app.get("/api/reviews/rid/:reviewId", findReviewByReviewId);
+
+    const createReview = async (req, res) => {
+        const Review = await dao.createReview(req.body);
+        res.json(Review);
+    };
+    app.post("/api/reviews", createReview);
+
+    const deleteReview = async (req, res) => {
+        const status = await dao.deleteReview(req.params.ReviewID);
+        res.json(status);
+    };
+    app.delete("/api/reviews/rid/:reviewId", deleteReview);
+
+    const updateReview = async (req, res) => {
+        const { reviewId } = req.params;
+        const status = await dao.updateReview(reviewId, req.body);
+        currentReview = await dao.findReviewByReviewId(reviewId);
+        res.json(status);
+    };
+    app.put("/api/reviews/rid/:reviewId", updateReview);
 
     //get reviews based on game
+    /*
     app.get("/api/reviews/:id", (req, res) => {
         const { id } = req.params;
         const reviews = Database.reviews
@@ -43,5 +87,6 @@ function ReviewRoutes(app) {
         const reviews = Database.reviews;
         res.send(reviews);
     });
+    */
 }
 export default ReviewRoutes;
