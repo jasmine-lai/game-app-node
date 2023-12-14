@@ -40,7 +40,7 @@ function GameRoutes(app) {
                 'Client-ID': 'caz1k3iyna0frvcdf2vuupurrnf1el',
                 Authorization: 'Bearer ihyg0hixxny2sxzmz8x1lhh4itdjrp'
             },
-            data: `fields name,summary;\nsearch "${search}";\nlimit 51;`
+            data: `fields name,summary;\nsearch "${search}";\nlimit 20;`
         };
 
         axios.request(options).then(function (response) {
@@ -109,7 +109,7 @@ function GameRoutes(app) {
                 'Client-ID': 'caz1k3iyna0frvcdf2vuupurrnf1el',
                 Authorization: 'Bearer ihyg0hixxny2sxzmz8x1lhh4itdjrp'
             },
-            data: 'fields name,summary;\nlimit 30;\nsort rating desc;'
+            data: 'fields name,summary;\nlimit 10;\nsort rating desc;'
         };
 
         axios.request(allGameOptions).then(function (response) {
