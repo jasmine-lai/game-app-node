@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema(
     pfp: String,
     role: {
       type: String,
-      enum: ["GAMER", "DEVELOPER"],
+      enum: ["GAMER", "ADMIN"],
       default: "GAMER",
     },
     favGame: [Number]
